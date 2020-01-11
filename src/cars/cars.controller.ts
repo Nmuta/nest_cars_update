@@ -1,4 +1,4 @@
-import { Controller, Get, Req, Request} from '@nestjs/common';
+import { Controller, Get, Post, Req, Body, Request} from '@nestjs/common';
 
 @Controller('cars')
 export class CarsController {
@@ -9,8 +9,16 @@ export class CarsController {
             {make: 'fiat', model: '123 spider'}];
   }
 
-  @Get('showcase')
-  findOne(@Req() request: Request): string {
-    return 'this is the cars showcase';
+  @Get(':id')
+  findOne(@Req() request: Request): {} {
+    return {id: 25, make: 'tesla', model: 'model x'}
   }
+
+  @Post()
+  async create(@Body() carParams) {
+    return `I got your post request ! 
+    You want to create a ${carParams.make}`;
+  }
+  
+
 }
