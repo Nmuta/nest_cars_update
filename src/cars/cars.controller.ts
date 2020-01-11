@@ -19,6 +19,12 @@ export class CarsController {
     return `I got your post request ! 
     You want to create a ${carParams.make}`;
   }
+
+  @Post(':id')
+  async update(@Body() carParams) {
+    return `I got your post request ! 
+    You want to edit a ${carParams.make}`;
+  }
   
 
 }
