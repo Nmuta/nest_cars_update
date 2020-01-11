@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Req, Body, Request} from '@nestjs/common';
+import { Controller, Get, Post, Req, Body, Param, Request} from '@nestjs/common';
 
 @Controller('cars')
 export class CarsController {
@@ -21,9 +21,10 @@ export class CarsController {
   }
 
   @Post(':id')
-  async update(@Body() carParams) {
+  async update(@Body() carParams, @Param() params) {
     return `I got your post request ! 
-    You want to edit a ${carParams.make}`;
+    You want to edit a ${carParams.make} belonging to
+    ${params.id}`;
   }
   
 
